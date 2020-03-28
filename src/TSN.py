@@ -13,6 +13,8 @@ from dateutil.parser import parse
 import numpy as np
 import pandas as pd
 
+from Webscraper import Webscraper
+
 
 # class TSN_bs4:
 #
@@ -39,12 +41,12 @@ import pandas as pd
 #     temp_page = requests.get(url)
 #     return BeautifulSoup(temp_page.content, 'html.parser')
 
-class TSN_selenium:
+class TSN_selenium(Webscraper):
 
     def __init__(self):
-        self.driver = webdriver.Chrome("C:\Program Files\chromedriver_win32\chromedriver.exe")
+        super().__init__()
         self.home = 'https://www.tsn.ca/'
-        self.games = {'team1': [], 'team2': [], 'startTime': []}
+        self.games = {'team_home': [], 'team_away': [], 'startTime': []}
         self.games_df = pd.DataFrame()
 
     def open_home(self):
@@ -67,20 +69,19 @@ class TSN_selenium:
         print(dateText)
 
         # get team1, team2, and startTime from all games on the given date
-        game_elements = []
         game_elements = today_elem.find_elements_by_css_selector('.bms-schedule-details__event')
         for game in game_elements:
-            self.games['team1'].append(game.find_element_by_css_selector(
-                '.bms-schedule-details__event-team--home').find_element_by_css_selector(
-                '.bms-schedule-details__team-name').text.strip())
-            self.games['team2'].append(game.find_element_by_css_selector(
-                '.bms-schedule-details__event-team--away').find_element_by_css_selector(
-                '.bms-schedule-details__team-name').text.strip())
-
             startTime = game.find_element_by_css_selector('.bms-schedule-details__event-status').text.strip()
             self.games['startTime'].append(' '.join([dateText, startTime]))
-        #             TODO: convert date to datetime object
-        #             games[startTime] = datetime.strptime(startTime, '%A %b %d')
+            # TODO: convert date to datetime object
+            # games[startTime] = datetime.strptime(startTime, '%A %b %d')
+
+            self.games['team_home'].append(game.find_element_by_css_selector(
+                '.bms-schedule-details__event-team--home').find_element_by_css_selector(
+                '.bms-schedule-details__team-name').text.strip())
+            self.games['team_away'].append(game.find_element_by_css_selector(
+                '.bms-schedule-details__event-team--away').find_element_by_css_selector(
+                '.bms-schedule-details__team-name').text.strip())
 
         # convert dictionary to dataframe for adding betting odds
         self.games_df = pd.DataFrame.from_dict(self.games)
@@ -97,29 +98,3 @@ def expand_shadow_element(driver_, element):
     driver = driver_
     return driver.execute_script('return arguments[0].shadowRoot', element)
 
-def wait_for_xpath(xpath, timeout=10):
-    start_time = time.time()
-    while time.time() < start_time + timeout:
-        if xpath:
-            return True
-        else:
-            time.sleep(0.1)
-    raise Exception(
-        'Timeout waiting for page load'
-    )
-
-
-# class wait_for_page_load(object):
-#
-#     def __init__(self, browser):
-#         self.browser = browser
-#
-#     def __enter__(self):
-#         self.old_page = self.browser.find_element_by_tag_name('html')
-#
-#     def page_has_loaded(self):
-#         new_page = self.browser.find_element_by_tag_name('html')
-#         return new_page.id != self.old_page.id
-#
-#     def __exit__(self, *_):
-#         wait_for(self.page_has_loaded)

@@ -17,9 +17,7 @@ if __name__ == "__main__":
     # tsn_bs4.get_games('mlb')
 
     tsn_se = TSN_selenium()
-    # tsn_se.open_home()
     tsn_se.get_games('mlb')
-    
-    time.sleep(10)
+
     tsn_se.quit()
     print('end')
