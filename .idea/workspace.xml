@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e49d7b6-c14a-432f-b1df-019e512c720b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Betway.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bodog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EEEsport.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SportsInteraction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arbitrage_betting.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/arbitrage_betting.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TSN.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Webscraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Webscraper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arbitrage_sports_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/arbitrage_sports_main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -84,12 +84,6 @@ class TSN_selenium(Webscraper):
         self.games_df = pd.DataFrame.from_dict(self.games)
         self.print_games()
 
-    def close_browser(self):
-        self.driver.close()
-
-    def quit(self):
-        self.driver.quit()
-
 
 def expand_shadow_element(driver_, element):
     driver = driver_

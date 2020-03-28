@@ -9,15 +9,14 @@ import time
 
 from TSN import TSN_selenium
 
-# TODO: Make 'API' for each site so I can call something like TSN.baseball.get_games()
-if __name__ == "__main__":
-    print('start')
-    # tsn_bs4 = TSN_bs4()
-    # tsn_bs4.open_home()
-    # tsn_bs4.get_games('mlb')
-
+def data_collection():
     tsn_se = TSN_selenium()
     tsn_se.get_games('mlb')
+    tsn_se.get_games('nhl')
 
     tsn_se.quit()
+
+if __name__ == "__main__":
+    print('start')
+    data_collection()
     print('end')
