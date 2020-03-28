@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e49d7b6-c14a-432f-b1df-019e512c720b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TSN.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arbitrage_betting.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arbitrage_sports_main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TSN.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Webscraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Webscraper.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

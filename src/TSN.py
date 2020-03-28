@@ -15,7 +15,6 @@ import pandas as pd
 
 from Webscraper import Webscraper
 
-
 # class TSN_bs4:
 #
 #     def __init__(self):
@@ -47,7 +46,6 @@ class TSN_selenium(Webscraper):
         super().__init__()
         self.home = 'https://www.tsn.ca/'
         self.games = {'team_home': [], 'team_away': [], 'startTime': []}
-        self.games_df = pd.DataFrame()
 
     def open_home(self):
         self.driver.get(self.home)
@@ -55,7 +53,7 @@ class TSN_selenium(Webscraper):
     def get_games(self, league, date=None):
         # navigate to schedule webpage
         self.driver.get(self.home + '/' + league.lower() + '/schedule')
-        time.sleep(7)
+        time.sleep(5)
 
         # find and expand shadow root
         shadow_section_element = self.driver.find_element_by_css_selector('widgets-bms-schedule')
@@ -66,7 +64,6 @@ class TSN_selenium(Webscraper):
 
         # get date from the schedule
         dateText = today_elem.find_element_by_css_selector('.bms-schedule-details__day-header').text
-        print(dateText)
 
         # get team1, team2, and startTime from all games on the given date
         game_elements = today_elem.find_elements_by_css_selector('.bms-schedule-details__event')
@@ -85,7 +82,7 @@ class TSN_selenium(Webscraper):
 
         # convert dictionary to dataframe for adding betting odds
         self.games_df = pd.DataFrame.from_dict(self.games)
-        print(self.games_df)
+        self.print_games()
 
     def close_browser(self):
         self.driver.close()
